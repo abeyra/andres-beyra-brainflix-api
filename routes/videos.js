@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+// const {Bike} = require('../public/images/Upload-video-preview.jpg');
 
 function readVideos() {
 
@@ -42,14 +43,16 @@ router.get('/:id', (request, response) => {
 router.post('/', (request, response) => {
     const videos = readVideos();
 
-    const {title, description, id, image} = request.body;
+    // const staticImage = {Bike}; 
+
+    const {title, description, id} = request.body;
     console.log(request.body);
 
     const newVideo = {
       title,
       description,
       id,
-      image,
+      image: Bike,
       channel: 'Bitcoin',
       views: '0',
       likes: '0',
