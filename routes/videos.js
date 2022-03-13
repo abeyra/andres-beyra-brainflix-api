@@ -17,12 +17,10 @@ function writeVideos(data) {
 router.get("/", (request, response) => {
   const parsedData = readVideos();
   response.json(parsedData);
-  console.log("working");
 });
 
 //single video
 router.get("/:id", (request, response) => {
-  console.log("getting single video");
   const parsedData = readVideos();
   const individualVideo = parsedData.find(
     (video) => video.id === request.params.id
@@ -38,7 +36,6 @@ router.get("/:id", (request, response) => {
 router.post("/", (request, response) => {
   const videos = readVideos();
   const { title, description, id} = request.body;
-  console.log(request.body);
   const newVideo = {
     title,
     description,
@@ -76,8 +73,6 @@ router.post("/", (request, response) => {
 
   videos.push(newVideo);
   writeVideos(videos);
-
-  console.log(videos);
 
   response.status(201).json(newVideo);
 });
